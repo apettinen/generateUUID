@@ -9,6 +9,7 @@ Usage: ./generateUUID.py my.reverse.dns.notation.identifier
 Antti Pettinen
 Copyright 2016 Tampere University of Technology
 
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -31,5 +32,8 @@ else:
     print ('Too many or no reverse DNS notation identifiers present')
     sys.exit(1)
 
-newUUID = uuid.uuid3(uuid.NAMESPACE_DNS, reverseDNS)
-print reverseDNS + ':', newUUID
+if reverseDNS in {"-h","--help"}:
+    print('Usage: ./generateUUID.py my.reverse.dns.notation.identifier')
+else:
+    newUUID = uuid.uuid3(uuid.NAMESPACE_DNS, reverseDNS)
+    print reverseDNS + ':', newUUID
